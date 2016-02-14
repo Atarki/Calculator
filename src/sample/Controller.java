@@ -45,20 +45,20 @@ public class Controller {
                 currentNumber = currentNumber - newNumber;
                 break;
             case "/":
-                currentNumber = currentNumber /newNumber;
+                currentNumber = currentNumber / newNumber;
                 break;
             case "*":
                 currentNumber = currentNumber * newNumber;
                 break;
         }
-        displayField.setText((String.format("%.5f", currentNumber)).replace("," , "."));
+        displayField.setText((String.format("%.5f", currentNumber)).replace(",", "."));
 
     }
 
     public void handleOperation(ActionEvent event) {
-        currentOperator = ((JFXButton)event.getSource()).getText();
+        currentOperator = ((JFXButton) event.getSource()).getText();
         currentNumber = Double.parseDouble(displayField.getText());
-        displayField.setPromptText(displayField.getText());
+        displayField.setPromptText(displayField.getText() + currentOperator);
         displayField.setText("");
     }
 }
