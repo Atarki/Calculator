@@ -60,5 +60,6 @@ public class Controller {
         currentNumber = Double.parseDouble(displayField.getText());
         displayField.setPromptText(displayField.getText() + currentOperator);
         displayField.setText("");
+
     }
 }
