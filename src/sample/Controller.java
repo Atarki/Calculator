@@ -9,7 +9,7 @@ public class Controller {
     @FXML
     private JFXTextField displayField;
     private double currentNumber;
-    private String currentOperator;
+    private String currentOperator = "=";
 
     public void handleReset() {
         currentNumber = 0;
@@ -19,8 +19,11 @@ public class Controller {
     }
 
     public void handleComaAction() {
+        String number = displayField.getText();
         if (displayField.getText() != null) {
-            displayField.setText(displayField.getText() + ".");
+            if (!number.contains(".")) {
+                displayField.setText(displayField.getText() + ".");
+            }
         } else {
             displayField.setText(".");
         }
@@ -36,7 +39,11 @@ public class Controller {
     }
 
     public void handleResult() {
-        double newNumber = Double.parseDouble(displayField.getText());
+        String number = displayField.getText();
+        double newNumber = 0;
+        if (!number.isEmpty() && !number.equals(".")) {
+            newNumber = Double.parseDouble(number);
+        }
         switch (currentOperator) {
             case "+":
                 currentNumber = currentNumber + newNumber;
@@ -57,9 +64,12 @@ public class Controller {
 
     public void handleOperation(ActionEvent event) {
         currentOperator = ((JFXButton) event.getSource()).getText();
-        currentNumber = Double.parseDouble(displayField.getText());
-        displayField.setPromptText(displayField.getText() + currentOperator);
+        String number = displayField.getText();
+        if (!number.isEmpty() && !number.equals(".")) {
+            currentNumber = Double.parseDouble(number);
+        }
         displayField.setText("");
+        displayField.setPromptText(displayField.getText() + currentOperator);
 
     }
 }
