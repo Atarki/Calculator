@@ -1,4 +1,4 @@
-package sample;
+package calculator.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/calculator/fxml/UI.fxml"));
         primaryStage.setTitle("Calculator ver. 0.1");
 
         Scene scene = new Scene(root, 415,515,Color.DEEPSKYBLUE);
